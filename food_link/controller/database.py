@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 
-from fastapi_playtime.settings import Settings
+from food_link.config.settings import Settings
 
 engine = create_engine(Settings().DATABASE_URL)
 
