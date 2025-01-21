@@ -19,3 +19,19 @@ def bad_request(detail: str):
     )
 
     return error_bad_request
+
+
+def forbidden(detail: str):
+    error_forbidden = HTTPException(
+        status_code=HTTPStatus.FORBIDDEN, detail=detail
+    )
+
+    return error_forbidden
+
+
+def not_found(detail: str):
+    error_not_foud = HTTPException(
+        status_code=HTTPStatus.NOT_FOUND, detail=detail
+    )
+
+    return error_not_foud
