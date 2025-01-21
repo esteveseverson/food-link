@@ -3,11 +3,15 @@ from http import HTTPStatus
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from food_link.routers import auth, users, donation
+from food_link.routers import auth, donation, users
 
 app = FastAPI()
 
-origins = ['http://localhost:3000']
+origins = [
+    'http://localhost:3000',
+    'http://localhost:4200',
+    '192.168.15.164:4200'
+]
 
 app.add_middleware(
     CORSMiddleware,

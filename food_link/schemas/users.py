@@ -28,3 +28,7 @@ class UserPublic(BaseModel):
 
 class UserList(BaseModel):
     users: List[UserPublic]
+
+
+class UserName(BaseModel):
+    nome: str

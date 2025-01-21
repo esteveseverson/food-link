@@ -1,4 +1,4 @@
-from datetime import datetime
+from typing import List
 
 from pydantic import BaseModel
 
@@ -20,3 +20,14 @@ class DonationPublic(BaseModel):
     number: int
     neighborhood: str
     created_at: str
+
+
+class DonationList(BaseModel):
+    donations: List[DonationPublic]
+    
+class DonationUpdate(BaseModel):
+    item: str | None = None
+    quantity: int | None = None
+    street: str | None = None
+    number: int | None = None
+    neighborhood: str | None = None

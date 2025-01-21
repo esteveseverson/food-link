@@ -9,7 +9,7 @@ from food_link.controller.database import get_session
 from food_link.middleware.error_hadler import bad_request, forbidden, not_found
 from food_link.models.users import User
 from food_link.schemas.commom import Message
-from food_link.schemas.users import UserCreate, UserList, UserPublic
+from food_link.schemas.users import UserCreate, UserList, UserPublic, UserName
 from food_link.validators.security import get_current_user, get_password_hash
 
 router = APIRouter(prefix='/users', tags=['Usuários'])
@@ -59,6 +59,16 @@ def read_users(
 
     users = session.scalars(select(User).limit(limit).offset(skip)).all()
     return {'users': users}
+
+@router.get('/current_user', status_code=HTTPStatus.OK, response_model=UserName)
+def get_current_user_name(current_user: T_CurrentUser, session:T_Session):
+    
+    user = session.query(User).where(User.id == current_user.id).first()
+    
+    if not user:
+        raise not_found(detail='user not found')
+    
+    return user
 
 
 @router.get('/{user_id}', response_model=UserPublic)
