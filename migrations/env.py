@@ -9,6 +9,7 @@ from food_link.config.settings import Settings
 from food_link.controller.registry import table_registry
 from food_link.models.users import User
 from food_link.models.donation import Donation
+from food_link.models.request import Request
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

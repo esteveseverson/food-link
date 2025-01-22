@@ -24,7 +24,8 @@ class DonationPublic(BaseModel):
 
 class DonationList(BaseModel):
     donations: List[DonationPublic]
-    
+
+
 class DonationUpdate(BaseModel):
     item: str | None = None
     quantity: int | None = None
